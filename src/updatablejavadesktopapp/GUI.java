@@ -55,6 +55,8 @@ public class GUI extends javax.swing.JFrame {
             connection.disconnect();
 
             remoteVersion = content.toString().trim();
+            txt_area.append("remote_ver: " + remoteVersion + "\n");
+            txt_area.append("local_ver: " + localVersion+ "\n");
 
             if (remoteVersion.equals(localVersion)) {
                 System.out.println("Version matches");
@@ -68,7 +70,7 @@ public class GUI extends javax.swing.JFrame {
 
         } catch (IOException e) {
             System.out.print(e);
-            versionValue.setText(e.toString());
+            txt_area.append(e.toString());
         }
 
     }
@@ -103,6 +105,8 @@ public class GUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         versionValue = new javax.swing.JLabel();
         btn_update = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txt_area = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -117,16 +121,25 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        txt_area.setColumns(20);
+        txt_area.setRows(5);
+        jScrollPane1.setViewportView(txt_area);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 247, Short.MAX_VALUE)
-                .addComponent(versionValue)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_update))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(versionValue)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_update))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,7 +148,9 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(versionValue)
                     .addComponent(btn_update))
-                .addGap(0, 275, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -170,7 +185,7 @@ public class GUI extends javax.swing.JFrame {
 //        builder.start();
 //        System.exit(0);
 //    }
-        
+
 //    }
 
     }//GEN-LAST:event_btn_updateActionPerformed
@@ -213,6 +228,8 @@ public class GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_update;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea txt_area;
     private javax.swing.JLabel versionValue;
     // End of variables declaration//GEN-END:variables
 }
