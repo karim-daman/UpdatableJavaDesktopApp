@@ -30,8 +30,7 @@ public class GUI extends javax.swing.JFrame {
 
         String filePath = "src\\updatablejavadesktopapp\\version.json";
         readAndPrintJsonFile(filePath);
-
-        String fileURL = "https://raw.githubusercontent.com/karim-daman/UpdatableJavaDesktopApp/main/version.txt";
+        String fileURL = "https://raw.githubusercontent.com/karim-daman/UpdatableJavaDesktopApp/main/version";
 
         try {
             //Create a URL object
@@ -143,7 +142,36 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
-        // TODO add your handling code here:
+//       private static void downloadAndUpdate(GHRelease release) throws IOException {
+//        for (GHAsset asset : release.getAssets()) {
+//            if (asset.getName().endsWith(".jar")) {
+//                URL url = new URL(asset.getBrowserDownloadUrl());
+//                Path targetPath = Paths.get("path/to/your/app.jar");
+//                
+//                // Download the new JAR
+//                try (InputStream in = url.openStream()) {
+//                    Files.copy(in, targetPath, StandardCopyOption.REPLACE_EXISTING);
+//                }
+//
+//                // Restart the application
+//                restartApplication();
+//            }
+//        }
+//        
+//        
+//         private static void restartApplication() throws IOException {
+//        String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
+//        File currentJar = new File(AutoUpdater.class.getProtectionDomain().getCodeSource().getLocation().toURI());
+//
+//        if (!currentJar.getName().endsWith(".jar"))
+//            return;
+//
+//        ProcessBuilder builder = new ProcessBuilder(javaBin, "-jar", currentJar.getPath());
+//        builder.start();
+//        System.exit(0);
+//    }
+        
+//    }
 
     }//GEN-LAST:event_btn_updateActionPerformed
 
