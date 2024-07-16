@@ -56,7 +56,7 @@ public class GUI extends javax.swing.JFrame {
 
             remoteVersion = content.toString().trim();
             txt_area.append("remote_ver: " + remoteVersion + "\n");
-            txt_area.append("local_ver: " + localVersion+ "\n");
+            txt_area.append("local_ver: " + localVersion + "\n");
 
             if (remoteVersion.equals(localVersion)) {
                 System.out.println("Version matches");
@@ -77,7 +77,7 @@ public class GUI extends javax.swing.JFrame {
 
     public static String localVersion = "", remoteVersion = "";
 
-    public static void readAndPrintJsonFile(String filePath) {
+    public void readAndPrintJsonFile(String filePath) {
         try {
             // Read the file content into a String
             String content = new String(Files.readAllBytes(Paths.get(filePath)));
@@ -87,6 +87,8 @@ public class GUI extends javax.swing.JFrame {
 
             // Extract specific values using keys
             localVersion = json.getString("version").trim();
+
+            txt_area.append("found: " + localVersion + "\n");
 
         } catch (IOException | JSONException e) {
             e.printStackTrace();
